@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .main{
+            margin: auto;
+            width: 50%;
+        }
+        .center{
+           display: block;
+           margin-left: auto;
+           margin-right: auto;
+           margin-top: 10px;;
+            
+        }
+        #healthbar{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            border: solid 2px black;
+            width: 500px;
+            height: 20px;
+        }
+        #health{
+            background-color: red;
+            width: 500px;
+            height: 20px;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PUNCHING BAG</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#burst").hide();
+            $("#punch").click(function(){
+                health = $("#health").width();
+                health = health - 50;
+                $("#health").css({width:health});
+                if(health <= 0){
+                    $("#bag").hide();
+                    $("#burst").show();
+                }
+            });
+
+            $("#reset").click(function(){
+                $("#bag").show();
+                $("#burst").hide();
+                $("#health").css({width:500});
+            });
+        });           
+        
+    </script>
+</head>
+<body>
+    <div id="main" class="main">
+        
+        <img src="bag.png" id="bag" class="center">
+        <img src="bag-burst.png" id="burst" class="center">
+        
+    
+        <div id="healthbar">
+            <div id="health"></div>
+        </div>
+
+        <button id='punch' class="center">PUNCH</button>
+        <button id='reset' class="center">RESET</button>
+        
+        
+        
+        
+    </div>
+</body>
+</html>
